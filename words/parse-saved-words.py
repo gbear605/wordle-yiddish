@@ -5,6 +5,11 @@ import random
 
 import unicodedata
 
+def is_diacritic(char):
+	return unicodedata.category(char) == 'Mn'
+
+non_letters = [' ', '.', '־', '״', '\'', '׳']
+
 cleaned_words = []
 
 chars = set()
@@ -15,7 +20,7 @@ with open("yiddish-words.json") as f:
 		word = re.sub('װ', 'וו', word)
 		word = re.sub('ײ', 'יי', word)
 
-		if ' ' not in word and '.' not in word and len(''.join(ch for ch in word if unicodedata.combining(ch) == 0)) == 5:
+		if all([non_letter not in word for non_letter in non_letters]) and len(''.join(ch for ch in word if not is_diacritic(ch))) == 5:
 			word = re.sub('וּ', 'ו', word)
 			word = re.sub('שׂ', 'ש', word)
 			word = re.sub('ך', 'כ', word)
@@ -24,15 +29,21 @@ with open("yiddish-words.json") as f:
 			word = re.sub('ן', 'נ', word)
 			word = re.sub('ץ', 'צ', word)
 
-			#print(list(word))
-			#print(word)
-			#word = ''.join([c for c in word if unicodedata.category(c) != 'Mn'])
 			cleaned_words.append(word)
+			char_parts = []
 			for c in word:
 				if unicodedata.category(c) == 'Lo':
-					chars.add(c)
+					if char_parts != []:
+						chars.add(''.join(char_parts))
+					char_parts = [c]
+				elif is_diacritic(c):
+					char_parts.append(c)
+				else:
+					print(c + ': ' + unicodedata.category(c))
 
 
-#print(sorted(chars))
-#random.shuffle(cleaned_words)
-print(', '.join(cleaned_words))
+#print(', '.join(sorted(chars)))  # all of the glyphs (ie. real Hebrew characters) in the short words
+#print(', '.join(sorted(cleaned_words)))  # all of the short words
+
+#print('  | "' + '"\n  | "'.join(sorted(chars)) + '"')  # Prints the list for statuses.ts
+print('export const VALIDGUESSES = [\n  "' + '",\n  "'.join(sorted(cleaned_words)) + '",\n];')  # for validGuesses.ts
