@@ -3,6 +3,8 @@ import requests
 import re
 from typing import Optional
 
+import json
+
 base = 'https://en.wiktionary.org/'
 next_link: Optional[str] = '/wiki/Category:Yiddish_lemmas'
 
@@ -20,4 +22,4 @@ while next_link is not None:
 	else:
 		next_link = next_tag['href']
 
-print(words)
+print(json.dumps(words, ensure_ascii=False))
