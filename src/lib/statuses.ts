@@ -7,6 +7,7 @@ export type CharValue =
   | "אַ"
   | "אָ"
   | "ב"
+  | "בּ"
   | "בֿ"
   | "ג"
   | "ד"
@@ -16,8 +17,6 @@ export type CharValue =
   | "ח"
   | "ט"
   | "י"
-  | "יִ"
-  | "יַ"
   | "כ"
   | "כּ"
   | "ל"
@@ -25,7 +24,6 @@ export type CharValue =
   | "נ"
   | "ס"
   | "ע"
-  | "פ"
   | "פּ"
   | "פֿ"
   | "צ"
@@ -33,7 +31,11 @@ export type CharValue =
   | "ר"
   | "ש"
   | "ת"
-  | "תּ";
+  | "תּ"
+  | "װ"
+  | "ױ"
+  | "ײ"
+  | "ײַ";
 
 export const getStatuses = (
   guesses: string[]
