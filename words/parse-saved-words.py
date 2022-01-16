@@ -17,9 +17,11 @@ with open("yiddish-words.json") as f:
 	words = json.loads(f.read())
 	
 	for word in words:
-		word = re.sub('ײִ', 'יי', word)
+		word = re.sub('ײִ', 'ײ', word)
 		word = re.sub('וי', 'ױ', word)
 		word = re.sub('ױִ', 'ױ', word)
+		word = re.sub('וו', 'װ', word)
+		word = re.sub('יי', 'ײ', word)
 
 		word = re.sub('וּ', 'ו', word)
 		word = re.sub('שׂ', 'ש', word)
