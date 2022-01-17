@@ -44,7 +44,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
 
   return (
     <div>
-      <div className="flex justify-center mb-1">
+      <div className="flex justify-center mb-1 flex-row-reverse">
         <Key value="כּ" onClick={onClick} status={charStatuses['כּ']} />
         <Key value="ש" onClick={onClick} status={charStatuses['ש']} />
         <Key value="ע" onClick={onClick} status={charStatuses['ע']} />
@@ -56,7 +56,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         <Key value="אָ" onClick={onClick} status={charStatuses['אָ']} />
         <Key value="פּ" onClick={onClick} status={charStatuses['פּ']} />
       </div>
-      <div className="flex justify-center mb-1">
+      <div className="flex justify-center mb-1 flex-row-reverse">
         <Key value="אַ" onClick={onClick} status={charStatuses['אַ']} />
         <Key value="ס" onClick={onClick} status={charStatuses['ס']} />
         <Key value="ד" onClick={onClick} status={charStatuses['ד']} />
@@ -67,7 +67,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         <Key value="ק" onClick={onClick} status={charStatuses['ק']} />
         <Key value="ל" onClick={onClick} status={charStatuses['ל']} />
       </div>
-      <div className="flex justify-center mb-1">
+      <div className="flex justify-center mb-1 flex-row-reverse">
         <Key value="ז" onClick={onClick} status={charStatuses['ז']} />
         <Key value="כ" onClick={onClick} status={charStatuses['כ']} />
         <Key value="צ" onClick={onClick} status={charStatuses['צ']} />
@@ -76,10 +76,8 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         <Key value="נ" onClick={onClick} status={charStatuses['נ']} />
         <Key value="מ" onClick={onClick} status={charStatuses['מ']} />
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center flex-row-reverse">
         <Key width={65.4} value="ENTER" onClick={onClick}>
-          Enter
-          <br />
           אַרייַן
         </Key>
         <Key value="תּ" onClick={onClick} status={charStatuses['תּ']} />
@@ -89,8 +87,6 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         <Key value="ח" onClick={onClick} status={charStatuses['ח']} />
         <Key value="בֿ" onClick={onClick} status={charStatuses['בֿ']} />
         <Key width={65.4} value="DELETE" onClick={onClick}>
-          Delete
-          <br />
           אויסמעק
         </Key>
       </div>

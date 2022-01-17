@@ -50,13 +50,37 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    About
+                    וועגן ווערטל
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      This is an open source clone of the game Wordle -{' '}
+                      ווערטל ניצט אן אָפֿנקאָדיק ווערסיע פֿון דער שפּיל Wordle.
+                      -{' '}
                       <a
-                        href="https://github.com/hannahcode/wordle"
+                        href="https://github.com/gbear605/wordle-yiddish"
+                        className="underline font-bold"
+                      >
+                        מען קען זען דעם קאָד דאָ
+                      </a>{' '}
+                      און{' '}
+                      <a
+                        href="https://www.powerlanguage.co.uk/wordle/"
+                        className="underline font-bold"
+                      >
+                        שפּילן דעם אָריגינאָל דאָ
+                      </a>
+                      .
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      יעדער קלאַוויש איז איין אות. למושל וו איז איין אות און
+                      נישט צוויי. צאַַצקען זיך מיט דעם!
+                    </p>
+
+                    <p className="text-sm text-gray-500">
+                      This is an open source clone of the game Wordle in Yiddish
+                      -{' '}
+                      <a
+                        href="https://github.com/gbear605/wordle-yiddish"
                         className="underline font-bold"
                       >
                         check out the code here
@@ -67,7 +91,21 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                         className="underline font-bold"
                       >
                         play the original here
+                      </a>. Based on on{' '}
+                      <a
+                        href="https://github.com/hannahcode/wordle"
+                        className="underline font-bold"
+                      >
+                        this clone of Wordle
+                      </a>{' '}
+                      by{' '}
+                      <a
+                        href="https://github.com/hannahcode"
+                        className="underline font-bold"
+                      >
+                        Hannah Park
                       </a>
+                      .
                     </p>
                   </div>
                 </div>

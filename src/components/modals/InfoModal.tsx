@@ -51,46 +51,47 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    How to play
+                    כּללים פֿאַר שפּילן
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Guess the WORDLE in 6 tries. After each guess, the color
-                      of the tiles will change to show how close your guess was
-                      to the word.
+                      טרעפֿן דאָס וואָרט אין זעקס פּרוּוון. נאָך יעדן טרעףֿ די
+                      קאָלירן פֿון די קאַכלען וועלן זיך בייַטן צו ווייַזן ווי
+                      נאָענט דער טרעףֿ איז געווען צו דעם ריכטיקע וואָרט.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="W" status="correct" />
-                      <Cell value="E" />
-                      <Cell value="A" />
-                      <Cell value="R" />
-                      <Cell value="Y" />
+                      <Cell value="ל" status="correct" />
+                      <Cell value="ר" />
+                      <Cell value="י" />
+                      <Cell value="נ" />
+                      <Cell value="ש" />
                     </div>
                     <p className="text-sm text-gray-500">
-                      The letter W is in the word and in the correct spot.
+                      דער אות ל איז אין דעם וואָרט און אין דעם ריכטיקן אָרט.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="P" />
-                      <Cell value="I" />
-                      <Cell value="L" status="present" />
-                      <Cell value="O" />
-                      <Cell value="T" />
+                      <Cell value="ל" />
+                      <Cell value="ט" />
+                      <Cell value="נ" status="present" />
+                      <Cell value="י" />
+                      <Cell value="ב" />
                     </div>
                     <p className="text-sm text-gray-500">
-                      The letter L is in the word but in the wrong spot.
+                      דער אות נ איז אין דעם וואָרט אָבער נישט אין דעם ריכטיקן
+                      אָרט.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="V" />
-                      <Cell value="A" />
-                      <Cell value="G" />
-                      <Cell value="U" status="absent" />
-                      <Cell value="E" />
+                      <Cell value="ע" />
+                      <Cell value="ק" />
+                      <Cell value="אַ" />
+                      <Cell value="ט" status="absent" />
+                      <Cell value="אַ" />
                     </div>
                     <p className="text-sm text-gray-500">
-                      The letter U is not in the word in any spot.
+                      דער אות ט איז נישט אין דעם וואָרט.
                     </p>
                   </div>
                 </div>
