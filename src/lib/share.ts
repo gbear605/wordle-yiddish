@@ -16,7 +16,7 @@ export const generateEmojiGrid = (guesses: string[]) => {
   return guesses
     .map((guess) => {
       const status = getGuessStatuses(guess);
-      return '\u200F' + splitter.splitGraphemes(guess).map((letter, i) => {
+      return '\u202E' + splitter.splitGraphemes(guess).map((letter, i) => {
           switch (status[i]) {
             case "correct":
               return "🟩";
