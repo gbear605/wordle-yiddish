@@ -1,9 +1,9 @@
 import { getGuessStatuses } from "./statuses";
-import { solutionIndex } from "./words";
+import { solutionIndex, splitter } from "./words";
 
 export const shareStatus = (guesses: string[]) => {
   navigator.clipboard.writeText(
-    "Wordle " +
+    "Yiddish Wordle " +
       solutionIndex +
       " " +
       guesses.length +
@@ -16,9 +16,7 @@ export const generateEmojiGrid = (guesses: string[]) => {
   return guesses
     .map((guess) => {
       const status = getGuessStatuses(guess);
-      return guess
-        .split("")
-        .map((letter, i) => {
+      return '\u200F' + splitter.splitGraphemes(guess).map((letter, i) => {
           switch (status[i]) {
             case "correct":
               return "🟩";
