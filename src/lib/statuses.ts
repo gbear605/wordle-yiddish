@@ -42,6 +42,8 @@ export const getStatuses = (
 ): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {}
 
+  let solutionGraphemes = splitter.splitGraphemes(solution)
+
   guesses.forEach((word) => {
     splitter.splitGraphemes(word).forEach((letter, i) => {
       if (!solution.includes(letter)) {
@@ -49,7 +51,7 @@ export const getStatuses = (
         return (charObj[letter] = 'absent')
       }
 
-      if (letter === solution[i]) {
+      if (letter === solutionGraphemes[i]) {
         //make status correct
         return (charObj[letter] = 'correct')
       }
