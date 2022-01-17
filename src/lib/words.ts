@@ -1,6 +1,10 @@
 import { WORDS } from '../constants/wordlist'
 import { VALIDGUESSES } from '../constants/validGuesses'
 
+import GraphemeSplitter from 'grapheme-splitter'
+
+export const splitter = new GraphemeSplitter()
+
 export const isWordInWordList = (word: string) => {
   return (
     WORDS.includes(word.toLowerCase()) ||
