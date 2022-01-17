@@ -78,7 +78,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
       </div>
       <div className="flex justify-center flex-row-reverse">
         <Key width={65.4} value="ENTER" onClick={onClick}>
-          אַרייַן
+          אַרײַן
         </Key>
         <Key value="תּ" onClick={onClick} status={charStatuses['תּ']} />
         <Key value="ױ" onClick={onClick} status={charStatuses['ױ']} />
