@@ -12,3 +12,7 @@ $ cd wordle
 $ npm install
 $ npm run start
 ```
+
+## Information sources
+
+Words were initially sourced from English Wiktionary, looking for all words that were tagged as Yiddish Lemmas. Words were also sourced from [Jochre](https://github.com/urieli/jochre/tree/master/jochre_yiddish/resources/lexicons).
