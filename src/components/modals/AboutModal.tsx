@@ -99,7 +99,7 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                       >
                         play the original here
                       </a>
-                      . Based on on{' '}
+                      . It is based on{' '}
                       <a
                         href="https://github.com/hannahcode/wordle"
                         className="underline font-bold"
@@ -113,7 +113,24 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                       >
                         Hannah Park
                       </a>
-                      .
+                      . The words used, licensed under CC BY-SA 3.0, are a
+                      combination of the Yiddish lemmas created by the editors
+                      of{' '}
+                      <a
+                        href="https://en.wiktionary.org/"
+                        className="underline font-bold"
+                      >
+                        English Wiktionary
+                      </a>{' '}
+                      and{' '}
+                      <a
+                        href="https://raw.githubusercontent.com/urieli/jochre/4613d79d72a10d8b67258f7e60bf0740c9e26b71/jochre_yiddish/resources/lexicons/yiddish-lebt-spellchecker.txt"
+                        className="underline font-bold"
+                      >
+                        the spellchecking dictionary
+                      </a>{' '}
+                      created and actualized by Simcha Taub of the ייִדיש לעבט
+                      project and updated by Assaf Urieli.
                     </p>
                   </div>
                 </div>
