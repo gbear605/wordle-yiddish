@@ -76,7 +76,7 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                       נישט צוויי. צאַַצקען זיך מיט דעם!
                     </p>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500" dir="ltr">
                       This is an open source clone of the game Wordle in Yiddish
                       -{' '}
                       <a
@@ -91,7 +91,8 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                         className="underline font-bold"
                       >
                         play the original here
-                      </a>. Based on on{' '}
+                      </a>
+                      . Based on on{' '}
                       <a
                         href="https://github.com/hannahcode/wordle"
                         className="underline font-bold"
