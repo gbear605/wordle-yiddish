@@ -15,10 +15,12 @@ $ npm run start
 ```
 
 _To build/run docker container:_
+
 ```bash
 $ docker build -t notwordle .
 $ docker run -d -p 3000:3000 notwordle
 ```
+
 open http://localhost:3000 in browser.
 
 ## Lexicon licensing
