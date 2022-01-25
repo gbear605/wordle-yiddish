@@ -71,7 +71,7 @@ function App() {
   }
 
   const onDelete = () => {
-    setCurrentGuess(currentGuess.slice(0, -1))
+    setCurrentGuess(splitter.splitGraphemes(currentGuess).slice(0, -1).join(''))
   }
 
   const onEnter = () => {
