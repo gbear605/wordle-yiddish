@@ -13,6 +13,7 @@ import {
   solution,
   splitter,
 } from './lib/words'
+import { characters } from './lib/statuses'
 import { StatsModal } from './components/modals/StatsModal'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
@@ -64,7 +65,8 @@ function App() {
     if (
       splitter.splitGraphemes(currentGuess).length < 5 &&
       guesses.length < 6 &&
-      !isGameWon
+      !isGameWon &&
+      characters.includes(value)
     ) {
       setCurrentGuess(`${currentGuess}${value}`)
     }
