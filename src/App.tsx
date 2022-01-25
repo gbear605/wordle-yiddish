@@ -20,6 +20,8 @@ import {
   saveGameStateToLocalStorage,
 } from './lib/localStorage'
 
+const alertTimeout = 8000
+
 function App() {
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
@@ -77,14 +79,14 @@ function App() {
       setIsNotEnoughLetters(true)
       return setTimeout(() => {
         setIsNotEnoughLetters(false)
-      }, 2000)
+      }, alertTimeout)
     }
 
     if (!isWordInWordList(currentGuess)) {
       setIsWordNotFoundAlertOpen(true)
       return setTimeout(() => {
         setIsWordNotFoundAlertOpen(false)
-      }, 2000)
+      }, alertTimeout)
     }
 
     const winningWord = isWinningWord(currentGuess)
@@ -139,7 +141,7 @@ function App() {
           setShareComplete(true)
           return setTimeout(() => {
             setShareComplete(false)
-          }, 2000)
+          }, alertTimeout)
         }}
       />
       <InfoModal
