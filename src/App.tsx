@@ -75,7 +75,7 @@ function App() {
   }
 
   const onEnter = () => {
-    if (!(currentGuess.length === 5) && !isGameLost) {
+    if (!(splitter.splitGraphemes(currentGuess).length === 5) && !isGameLost) {
       setIsNotEnoughLetters(true)
       return setTimeout(() => {
         setIsNotEnoughLetters(false)
