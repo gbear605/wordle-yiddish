@@ -6,7 +6,6 @@ import { Grid } from './components/grid/Grid'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { AboutModal } from './components/modals/AboutModal'
 import { InfoModal } from './components/modals/InfoModal'
-import { WinModal } from './components/modals/WinModal'
 import {
   isWordInWordList,
   isWinningWord,
@@ -15,25 +14,25 @@ import {
 } from './lib/words'
 import { characters } from './lib/statuses'
 import { StatsModal } from './components/modals/StatsModal'
+import { WIN_MESSAGES } from './constants/strings'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
 } from './lib/localStorage'
 
-const alertTimeout = 8000
+const ALERT_TIME_MS = 8000
 
 function App() {
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
-  const [isWinModalOpen, setIsWinModalOpen] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
   const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
-  const [shareComplete, setShareComplete] = useState(false)
+  const [successAlert, setSuccessAlert] = useState('')
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
     if (loaded?.solution !== solution) {
@@ -57,9 +56,20 @@ function App() {
 
   useEffect(() => {
     if (isGameWon) {
-      setIsWinModalOpen(true)
+      setSuccessAlert(
+        WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
+      )
+      setTimeout(() => {
+        setSuccessAlert('')
+        setIsStatsModalOpen(true)
+      }, ALERT_TIME_MS)
     }
-  }, [isGameWon])
+    if (isGameLost) {
+      setTimeout(() => {
+        setIsStatsModalOpen(true)
+      }, ALERT_TIME_MS)
+    }
+  }, [isGameWon, isGameLost])
 
   const onChar = (value: string) => {
     if (
@@ -77,18 +87,21 @@ function App() {
   }
 
   const onEnter = () => {
-    if (!(splitter.splitGraphemes(currentGuess).length === 5) && !isGameLost) {
+    if (isGameWon || isGameLost) {
+      return
+    }
+    if (!(splitter.splitGraphemes(currentGuess).length === 5)) {
       setIsNotEnoughLetters(true)
       return setTimeout(() => {
         setIsNotEnoughLetters(false)
-      }, alertTimeout)
+      }, ALERT_TIME_MS)
     }
 
     if (!isWordInWordList(currentGuess)) {
       setIsWordNotFoundAlertOpen(true)
       return setTimeout(() => {
         setIsWordNotFoundAlertOpen(false)
-      }, alertTimeout)
+      }, ALERT_TIME_MS)
     }
 
     const winningWord = isWinningWord(currentGuess)
@@ -134,18 +147,6 @@ function App() {
         onEnter={onEnter}
         guesses={guesses}
       />
-      <WinModal
-        isOpen={isWinModalOpen}
-        handleClose={() => setIsWinModalOpen(false)}
-        guesses={guesses}
-        handleShare={() => {
-          setIsWinModalOpen(false)
-          setShareComplete(true)
-          return setTimeout(() => {
-            setShareComplete(false)
-          }, alertTimeout)
-        }}
-      />
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
@@ -153,7 +154,14 @@ function App() {
       <StatsModal
         isOpen={isStatsModalOpen}
         handleClose={() => setIsStatsModalOpen(false)}
+        guesses={guesses}
         gameStats={stats}
+        isGameLost={isGameLost}
+        isGameWon={isGameWon}
+        handleShare={() => {
+          setSuccessAlert('די שפּיל איז קאָפּירט צו אירן קלעמברעטל')
+          return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS)
+        }}
       />
       <AboutModal
         isOpen={isAboutModalOpen}
@@ -180,8 +188,8 @@ function App() {
         isOpen={isGameLost}
       />
       <Alert
-        message="די שפּיל איז קאָפּירט צו אירן קלעמברעטל"
-        isOpen={shareComplete}
+        message={successAlert}
+        isOpen={successAlert !== ''}
         variant="success"
       />
     </div>
