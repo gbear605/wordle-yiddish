@@ -21,7 +21,7 @@ import {
   saveGameStateToLocalStorage,
 } from './lib/localStorage'
 
-const ALERT_TIME_MS = 8000
+const ALERT_TIME_MS = 5000
 
 function App() {
   const [currentGuess, setCurrentGuess] = useState('')
