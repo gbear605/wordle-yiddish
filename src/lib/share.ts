@@ -1,13 +1,9 @@
 import { getGuessStatuses } from './statuses'
 import { solutionIndex, splitter } from './words'
 
-export const shareStatus = (guesses: string[]) => {
+export const shareStatus = (guesses: string[], lost: boolean) => {
   navigator.clipboard.writeText(
-    'Yiddish Wordle ' +
-      solutionIndex +
-      ' ' +
-      guesses.length +
-      '/6\n\n' +
+    `Yiddish Wordle ${solutionIndex} ${lost ? 'X' : guesses.length}/6\n\n` +
       generateEmojiGrid(guesses)
   )
 }
