@@ -184,7 +184,7 @@ function App() {
         isOpen={isWordNotFoundAlertOpen}
       />
       <Alert
-        message={`דו האָסט פֿאַרשפֹּילט. דאָס וואָרט איז געווען ${solution}`}
+        message={`דאָס וואָרט איז געווען ${solution}`}
         isOpen={isGameLost}
       />
       <Alert
