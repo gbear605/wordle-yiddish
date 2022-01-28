@@ -2,6 +2,7 @@ import { KeyValue } from '../../lib/keyboard'
 import { getStatuses } from '../../lib/statuses'
 import { Key } from './Key'
 import { useEffect } from 'react'
+import { characters } from '../../lib/statuses'
 
 type Props = {
   onChar: (value: string) => void
@@ -31,7 +32,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         onDelete()
       } else {
         const key = e.key.toUpperCase()
-        if (key.length === 1 && key >= 'A' && key <= 'Z') {
+        if (characters.includes(key)) {
           onChar(key)
         }
       }
