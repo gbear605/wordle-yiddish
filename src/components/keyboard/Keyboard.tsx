@@ -3,6 +3,7 @@ import { getStatuses } from '../../lib/statuses'
 import { Key } from './Key'
 import { useEffect } from 'react'
 import { characters } from '../../lib/statuses'
+import { ENTER_TEXT, DELETE_TEXT } from '../../constants/strings'
 
 type Props = {
   onChar: (value: string) => void
@@ -79,7 +80,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
       </div>
       <div className="flex justify-center flex-row-reverse">
         <Key width={65.4} value="ENTER" onClick={onClick}>
-          אַרײַן
+          {ENTER_TEXT}
         </Key>
         <Key value="תּ" onClick={onClick} status={charStatuses['תּ']} />
         <Key value="ױ" onClick={onClick} status={charStatuses['ױ']} />
@@ -88,7 +89,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         <Key value="ח" onClick={onClick} status={charStatuses['ח']} />
         <Key value="בֿ" onClick={onClick} status={charStatuses['בֿ']} />
         <Key width={65.4} value="DELETE" onClick={onClick}>
-          אויסמעק
+          {DELETE_TEXT}
         </Key>
       </div>
     </div>

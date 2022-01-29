@@ -13,7 +13,15 @@ import {
   splitter,
 } from './lib/words'
 import { StatsModal } from './components/modals/StatsModal'
-import { WIN_MESSAGES } from './constants/strings'
+import {
+  WORDLE_TITLE,
+  WIN_MESSAGES,
+  GAME_COPIED_MESSAGE,
+  ABOUT_GAME_MESSAGE,
+  NOT_ENOUGH_LETTERS_MESSAGE,
+  WORD_NOT_FOUND_MESSAGE,
+  CORRECT_WORD_MESSAGE,
+} from './constants/strings'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
@@ -127,7 +135,7 @@ function App() {
   return (
     <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div className="flex w-80 mx-auto items-center mb-8">
-        <h1 className="text-xl grow font-bold">Yiddish Wordle</h1>
+        <h1 className="text-xl grow font-bold">{WORDLE_TITLE}</h1>
         <h1 className="text-xl grow font-bold">ווערטל</h1>
         <InformationCircleIcon
           className="h-6 w-6 cursor-pointer"
@@ -157,7 +165,7 @@ function App() {
         isGameLost={isGameLost}
         isGameWon={isGameWon}
         handleShare={() => {
-          setSuccessAlert('די שפּיל איז קאָפּירט צו אירן קלעמברעטל')
+          setSuccessAlert(GAME_COPIED_MESSAGE)
           return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS)
         }}
       />
@@ -173,18 +181,15 @@ function App() {
       >
         About this game
         <br />
-        וועגן ווערטל
+        {ABOUT_GAME_MESSAGE}
       </button>
 
-      <Alert message="נישט גענוג אותיות" isOpen={isNotEnoughLetters} />
+      <Alert message={NOT_ENOUGH_LETTERS_MESSAGE} isOpen={isNotEnoughLetters} />
       <Alert
-        message="דאָס וואָרט איז נישט אין דער רשימה"
+        message={WORD_NOT_FOUND_MESSAGE}
         isOpen={isWordNotFoundAlertOpen}
       />
-      <Alert
-        message={`דאָס וואָרט איז געווען ${solution}`}
-        isOpen={isGameLost}
-      />
+      <Alert message={CORRECT_WORD_MESSAGE(solution)} isOpen={isGameLost} />
       <Alert
         message={successAlert}
         isOpen={successAlert !== ''}
