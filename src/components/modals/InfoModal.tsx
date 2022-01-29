@@ -13,7 +13,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       isOpen={isOpen}
       handleClose={handleClose}
     >
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500 dark:text-gray-300">
         טרעפֿן דאָס וואָרט אין זעקס פּרוּוון. נאָך יעדן טרעףֿ די קאָלירן פֿון די
         קאַכלען וועלן זיך בייַטן צו ווייַזן ווי נאָענט דער טרעףֿ איז געווען צו
         דעם ריכטיקע וואָרט.
@@ -26,7 +26,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="נ" />
         <Cell value="ש" />
       </div>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500 dark:text-gray-300">
         דער אות ל איז אין דעם וואָרט און אין דעם ריכטיקן אָרט.
       </p>
 
@@ -37,7 +37,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="י" />
         <Cell value="ב" />
       </div>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500 dark:text-gray-300">
         דער אות נ איז אין דעם וואָרט אָבער נישט אין דעם ריכטיקן אָרט.
       </p>
 
@@ -48,7 +48,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="ט" status="absent" />
         <Cell value="אַ" />
       </div>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500 dark:text-gray-300">
         דער אות ט איז נישט אין דעם וואָרט.
       </p>
     </BaseModal>

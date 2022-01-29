@@ -8,7 +8,7 @@ type Props = {
 export const AboutModal = ({ isOpen, handleClose }: Props) => {
   return (
     <BaseModal title="וועגן ווערטל" isOpen={isOpen} handleClose={handleClose}>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500 dark:text-gray-300">
         ווערטל ניצט אן אָפֿנקאָדיק ווערסיע פֿון דער שפּיל Wordle. -{' '}
         <a
           href="https://github.com/gbear605/wordle-yiddish"
