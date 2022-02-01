@@ -1,4 +1,4 @@
-export const WORDLE_TITLE = 'Yiddish Wordle'
+export const GAME_TITLE = 'Yiddish Wordle'
 
 export const WIN_MESSAGES = ['דו האָסט געוווּנען!']
 export const GAME_COPIED_MESSAGE = 'שפּיל קאָפּירט צום קלעמברעטל'
