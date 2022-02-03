@@ -1,3 +1,5 @@
+import { Language } from '../constants/strings'
+
 const gameStateKey = 'gameState'
 
 type StoredGameState = {
@@ -32,4 +34,21 @@ export const saveStatsToLocalStorage = (gameStats: GameStats) => {
 export const loadStatsFromLocalStorage = () => {
   const stats = localStorage.getItem(gameStatKey)
   return stats ? (JSON.parse(stats) as GameStats) : null
+}
+
+const gameLanguageKey = 'gameLang'
+
+export const saveLanguageToLocalStorage = (language: Language) => {
+  localStorage.setItem(gameLanguageKey, language)
+}
+
+export const loadLanguageFromLocalStorage: () => Language = () => {
+  const language = localStorage.getItem(gameLanguageKey)
+  if (language === 'YIDDISH') {
+    return 'YIDDISH'
+  }
+  if (language === 'ENGLISH') {
+    return 'ENGLISH'
+  }
+  return 'ENGLISH' // default case
 }

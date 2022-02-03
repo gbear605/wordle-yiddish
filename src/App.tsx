@@ -2,6 +2,7 @@ import {
   InformationCircleIcon,
   ChartBarIcon,
   SunIcon,
+  TranslateIcon,
 } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Alert } from './components/alerts/Alert'
@@ -24,11 +25,14 @@ import {
   NOT_ENOUGH_LETTERS_MESSAGE,
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
+  Language,
 } from './constants/strings'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
+  loadLanguageFromLocalStorage,
+  saveLanguageToLocalStorage,
 } from './lib/localStorage'
 import './App.css'
 
@@ -46,6 +50,8 @@ function App() {
   const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
+  const [isGameWonAlertOpen, setIsGameWonAlertOpen] = useState(false)
+  const [isGameCopiedAlertOpen, setIsGameCopiedAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem('theme')
@@ -54,7 +60,9 @@ function App() {
       ? true
       : false
   )
-  const [successAlert, setSuccessAlert] = useState('')
+  const [language, setLanguage] = useState<Language>(
+    loadLanguageFromLocalStorage()
+  )
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
     if (loaded?.solution !== solution) {
@@ -85,17 +93,20 @@ function App() {
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
   }
 
+  const handleLanguage = (language: Language) => {
+    setLanguage(language)
+    saveLanguageToLocalStorage(language)
+  }
+
   useEffect(() => {
     saveGameStateToLocalStorage({ guesses, solution })
   }, [guesses])
 
   useEffect(() => {
     if (isGameWon) {
-      setSuccessAlert(
-        WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
-      )
+      setIsGameWonAlertOpen(true)
       setTimeout(() => {
-        setSuccessAlert('')
+        setIsGameWonAlertOpen(false)
         setIsStatsModalOpen(true)
       }, ALERT_TIME_MS)
     }
@@ -161,10 +172,14 @@ function App() {
   }
 
   return (
-    <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="flex w-80 mx-auto items-center mb-8 mt-12">
-        <h1 className="text-xl grow font-bold dark:text-white">{GAME_TITLE}</h1>
-        <h1 className="text-xl grow font-bold dark:text-white">ווערטל</h1>
+    <div
+      className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8"
+      dir={language === 'ENGLISH' ? 'ltr' : 'rtl'}
+    >
+      <div className="flex w-80 mx-auto items-center mb-8 mt-12" dir="rtl">
+        <h1 className="text-xl grow font-bold dark:text-white">
+          {GAME_TITLE(language)}
+        </h1>
         <SunIcon
           className="h-6 w-6 cursor-pointer dark:stroke-white"
           onClick={() => handleDarkMode(!isDarkMode)}
@@ -177,17 +192,27 @@ function App() {
           className="h-6 w-6 cursor-pointer dark:stroke-white"
           onClick={() => setIsStatsModalOpen(true)}
         />
+        <TranslateIcon
+          className="h-6 w-6 cursor-pointer dark:stroke-white"
+          onClick={() =>
+            handleLanguage(language === 'YIDDISH' ? 'ENGLISH' : 'YIDDISH')
+          }
+        />
       </div>
-      <Grid guesses={guesses} currentGuess={currentGuess} />
+      <div dir="rtl">
+        <Grid guesses={guesses} currentGuess={currentGuess} />
+      </div>
       <Keyboard
         onChar={onChar}
         onDelete={onDelete}
         onEnter={onEnter}
         guesses={guesses}
+        language={language}
       />
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
+        language={language}
       />
       <StatsModal
         isOpen={isStatsModalOpen}
@@ -197,13 +222,18 @@ function App() {
         isGameLost={isGameLost}
         isGameWon={isGameWon}
         handleShare={() => {
-          setSuccessAlert(GAME_COPIED_MESSAGE)
-          return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS)
+          setIsGameCopiedAlertOpen(true)
+          return setTimeout(
+            () => setIsGameCopiedAlertOpen(false),
+            ALERT_TIME_MS
+          )
         }}
+        language={language}
       />
       <AboutModal
         isOpen={isAboutModalOpen}
         handleClose={() => setIsAboutModalOpen(false)}
+        language={language}
       />
 
       <button
@@ -211,20 +241,29 @@ function App() {
         className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 select-none"
         onClick={() => setIsAboutModalOpen(true)}
       >
-        About this game
-        <br />
-        {ABOUT_GAME_MESSAGE}
+        {ABOUT_GAME_MESSAGE(language)}
       </button>
 
-      <Alert message={NOT_ENOUGH_LETTERS_MESSAGE} isOpen={isNotEnoughLetters} />
       <Alert
-        message={WORD_NOT_FOUND_MESSAGE}
+        message={NOT_ENOUGH_LETTERS_MESSAGE(language)}
+        isOpen={isNotEnoughLetters}
+      />
+      <Alert
+        message={WORD_NOT_FOUND_MESSAGE(language)}
         isOpen={isWordNotFoundAlertOpen}
       />
-      <Alert message={CORRECT_WORD_MESSAGE(solution)} isOpen={isGameLost} />
       <Alert
-        message={successAlert}
-        isOpen={successAlert !== ''}
+        message={CORRECT_WORD_MESSAGE(solution, language)}
+        isOpen={isGameLost}
+      />
+      <Alert
+        message={WIN_MESSAGES(language)}
+        isOpen={isGameWonAlertOpen}
+        variant="success"
+      />
+      <Alert
+        message={GAME_COPIED_MESSAGE(language)}
+        isOpen={isGameCopiedAlertOpen}
         variant="success"
       />
     </div>

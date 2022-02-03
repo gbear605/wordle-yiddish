@@ -4,10 +4,12 @@ import {
   SUCCESS_RATE_TEXT,
   CURRENT_STREAK_TEXT,
   BEST_STREAK_TEXT,
+  Language,
 } from '../../constants/strings'
 
 type Props = {
   gameStats: GameStats
+  language: Language
 }
 
 const StatItem = ({
@@ -25,13 +27,25 @@ const StatItem = ({
   )
 }
 
-export const StatBar = ({ gameStats }: Props) => {
+export const StatBar = ({ gameStats, language }: Props) => {
   return (
     <div className="flex justify-center my-2">
-      <StatItem label={TOTAL_TRIES_TEXT} value={gameStats.totalGames} />
-      <StatItem label={SUCCESS_RATE_TEXT} value={`${gameStats.successRate}%`} />
-      <StatItem label={CURRENT_STREAK_TEXT} value={gameStats.currentStreak} />
-      <StatItem label={BEST_STREAK_TEXT} value={gameStats.bestStreak} />
+      <StatItem
+        label={TOTAL_TRIES_TEXT(language)}
+        value={gameStats.totalGames}
+      />
+      <StatItem
+        label={SUCCESS_RATE_TEXT(language)}
+        value={`${gameStats.successRate}%`}
+      />
+      <StatItem
+        label={CURRENT_STREAK_TEXT(language)}
+        value={gameStats.currentStreak}
+      />
+      <StatItem
+        label={BEST_STREAK_TEXT(language)}
+        value={gameStats.bestStreak}
+      />
     </div>
   )
 }

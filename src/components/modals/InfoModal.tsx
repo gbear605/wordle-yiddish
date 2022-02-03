@@ -1,56 +1,108 @@
 import { Cell } from '../grid/Cell'
 import { BaseModal } from './BaseModal'
+import { Language } from '../../constants/strings'
 
 type Props = {
   isOpen: boolean
   handleClose: () => void
+  language: Language
 }
 
-export const InfoModal = ({ isOpen, handleClose }: Props) => {
-  return (
-    <BaseModal
-      title="כּללים פֿאַר שפּילן"
-      isOpen={isOpen}
-      handleClose={handleClose}
-    >
-      <p className="text-sm text-gray-500 dark:text-gray-300">
-        טרעפֿט דאָס װערטל מיט נישט מער װי זעקס טרעפֿן. נאָך יעדן טרעף, וועלן די
-        קאָלירן פֿון די קאַכלען אײַך ווײַזן ווי נאָענט דער טרעף איז צום ריכטיקן
-        װאָרט.
-      </p>
+export const InfoModal = ({ isOpen, handleClose, language }: Props) => {
+  if (language === 'YIDDISH') {
+    return (
+      <BaseModal
+        title="װי אַזױ צו שפּילן"
+        isOpen={isOpen}
+        handleClose={handleClose}
+      >
+        <p className="text-sm text-gray-500 dark:text-gray-300">
+          טרעפֿט דאָס װערטל מיט נישט מער װי זעקס טרעפֿן. נאָך יעדן טרעף, וועלן
+          די קאָלירן פֿון די קאַכלען אײַך ווײַזן ווי נאָענט דער טרעף איז צום
+          ריכטיקן װאָרט.
+        </p>
 
-      <div className="flex justify-center mb-1 mt-4">
-        <Cell value="ש" />
-        <Cell value="נ" />
-        <Cell value="י" />
-        <Cell value="ר" />
-        <Cell value="ל" status="correct" />
-      </div>
-      <p className="text-sm text-gray-500 dark:text-gray-300">
-        דער אות ל איז אין דעם וואָרט און אין דעם ריכטיקן אָרט.
-      </p>
+        <div className="flex justify-center mb-1 mt-4">
+          <Cell value="ש" />
+          <Cell value="נ" />
+          <Cell value="י" />
+          <Cell value="ר" />
+          <Cell value="ל" status="correct" />
+        </div>
+        <p className="text-sm text-gray-500 dark:text-gray-300">
+          דער אות ל איז אין דעם וואָרט און אין דעם ריכטיקן אָרט.
+        </p>
 
-      <div className="flex justify-center mb-1 mt-4">
-        <Cell value="ב" />
-        <Cell value="י" />
-        <Cell value="נ" status="present" />
-        <Cell value="ט" />
-        <Cell value="ל" />
-      </div>
-      <p className="text-sm text-gray-500 dark:text-gray-300">
-        דער אות נ איז אין דעם וואָרט אָבער נישט אין דעם ריכטיקן אָרט.
-      </p>
+        <div className="flex justify-center mb-1 mt-4">
+          <Cell value="ב" />
+          <Cell value="י" />
+          <Cell value="נ" status="present" />
+          <Cell value="ט" />
+          <Cell value="ל" />
+        </div>
+        <p className="text-sm text-gray-500 dark:text-gray-300">
+          דער אות נ איז אין דעם וואָרט אָבער נישט אין דעם ריכטיקן אָרט.
+        </p>
 
-      <div className="flex justify-center mb-1 mt-4">
-        <Cell value="אַ" />
-        <Cell value="ט" status="absent" />
-        <Cell value="אַ" />
-        <Cell value="ק" />
-        <Cell value="ע" />
-      </div>
-      <p className="text-sm text-gray-500 dark:text-gray-300">
-        דער אות ט איז נישט אין דעם וואָרט.
-      </p>
-    </BaseModal>
-  )
+        <div className="flex justify-center mb-1 mt-4">
+          <Cell value="אַ" />
+          <Cell value="ט" status="absent" />
+          <Cell value="אַ" />
+          <Cell value="ק" />
+          <Cell value="ע" />
+        </div>
+        <p className="text-sm text-gray-500 dark:text-gray-300">
+          דער אות ט איז נישט אין דעם וואָרט.
+        </p>
+      </BaseModal>
+    )
+  } else {
+    return (
+      <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose}>
+        <div dir="ltr">
+          <p className="text-sm text-gray-500 dark:text-gray-300">
+            Guess the wordle in six guesses.
+          </p>
+          <p className="text-sm text-gray-500 dark:text-gray-300">
+            After each guess, the color of the tiles will change to show how
+            close your guess was to the secret word.
+          </p>
+
+          <div className="flex justify-center mb-1 mt-4" dir="rtl">
+            <Cell value="ש" />
+            <Cell value="נ" />
+            <Cell value="י" />
+            <Cell value="ר" />
+            <Cell value="ל" status="correct" />
+          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-300">
+            The letter <strong>ל</strong> is in the word and in the correct
+            spot.
+          </p>
+
+          <div className="flex justify-center mb-1 mt-4" dir="rtl">
+            <Cell value="ב" />
+            <Cell value="י" />
+            <Cell value="נ" status="present" />
+            <Cell value="ט" />
+            <Cell value="ל" />
+          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-300">
+            The letter <strong>נ</strong> is in the word but in the wrong spot.
+          </p>
+
+          <div className="flex justify-center mb-1 mt-4" dir="rtl">
+            <Cell value="אַ" />
+            <Cell value="ט" status="absent" />
+            <Cell value="אַ" />
+            <Cell value="ק" />
+            <Cell value="ע" />
+          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-300">
+            The letter <strong>ע</strong> is not in the word in any spot.
+          </p>
+        </div>
+      </BaseModal>
+    )
+  }
 }

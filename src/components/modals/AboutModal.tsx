@@ -1,13 +1,19 @@
 import { BaseModal } from './BaseModal'
+import { ABOUT_GAME_MESSAGE, Language } from '../../constants/strings'
 
 type Props = {
   isOpen: boolean
   handleClose: () => void
+  language: Language
 }
 
-export const AboutModal = ({ isOpen, handleClose }: Props) => {
+export const AboutModal = ({ isOpen, handleClose, language }: Props) => {
   return (
-    <BaseModal title="וועגן ווערטל" isOpen={isOpen} handleClose={handleClose}>
+    <BaseModal
+      title={ABOUT_GAME_MESSAGE(language)}
+      isOpen={isOpen}
+      handleClose={handleClose}
+    >
       <p className="text-sm text-gray-500 dark:text-gray-300">
         ווערטל ניצט אן אָפֿנקאָדיק ווערסיע פֿון דער שפּיל Wordle. -{' '}
         <a

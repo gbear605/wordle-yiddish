@@ -3,16 +3,23 @@ import { getStatuses } from '../../lib/statuses'
 import { Key } from './Key'
 import { useEffect } from 'react'
 import { characters } from '../../lib/statuses'
-import { ENTER_TEXT, DELETE_TEXT } from '../../constants/strings'
+import { ENTER_TEXT, DELETE_TEXT, Language } from '../../constants/strings'
 
 type Props = {
   onChar: (value: string) => void
   onDelete: () => void
   onEnter: () => void
   guesses: string[]
+  language: Language
 }
 
-export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
+export const Keyboard = ({
+  onChar,
+  onDelete,
+  onEnter,
+  guesses,
+  language,
+}: Props) => {
   const charStatuses = getStatuses(guesses)
 
   const onClick = (value: KeyValue) => {
@@ -80,7 +87,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
       </div>
       <div className="flex justify-center flex-row-reverse">
         <Key width={65.4} value="ENTER" onClick={onClick}>
-          {ENTER_TEXT}
+          {ENTER_TEXT(language)}
         </Key>
         <Key value="תּ" onClick={onClick} status={charStatuses['תּ']} />
         <Key value="ױ" onClick={onClick} status={charStatuses['ױ']} />
@@ -89,7 +96,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         <Key value="ח" onClick={onClick} status={charStatuses['ח']} />
         <Key value="בֿ" onClick={onClick} status={charStatuses['בֿ']} />
         <Key width={65.4} value="DELETE" onClick={onClick}>
-          {DELETE_TEXT}
+          {DELETE_TEXT(language)}
         </Key>
       </div>
     </div>
