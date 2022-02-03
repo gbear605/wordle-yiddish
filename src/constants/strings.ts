@@ -35,7 +35,7 @@ export const WIN_MESSAGES = (language: Language, numGuessesRaw: number) => {
         THREE: ['אימפּאָזאַנט'],
         FOUR: ['אױסגעצײכנט'],
         FIVE: ['װוּנדערלעך'],
-        SIX: ['דאַנקען גאָט'],
+        SIX: ['פֿיו'],
       }
       break
     }
@@ -195,7 +195,7 @@ export const SUCCESS_RATE_TEXT = (language: Language) => {
 export const CURRENT_STREAK_TEXT = (language: Language) => {
   return getText(
     {
-      YIDDISH: 'איצטיקע געװין־סעריע',
+      YIDDISH: 'איצטיקער נאָכאַנאַנד',
       ENGLISH: 'Current streak',
     },
     language
@@ -204,7 +204,7 @@ export const CURRENT_STREAK_TEXT = (language: Language) => {
 export const BEST_STREAK_TEXT = (language: Language) => {
   return getText(
     {
-      YIDDISH: 'בעסטע געװין־סעריע',
+      YIDDISH: 'בעסטער נאָכאַנאַנד',
       ENGLISH: 'Best streak',
     },
     language

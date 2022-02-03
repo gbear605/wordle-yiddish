@@ -17,9 +17,9 @@ export const InfoModal = ({ isOpen, handleClose, language }: Props) => {
         handleClose={handleClose}
       >
         <p className="text-sm text-gray-500 dark:text-gray-300">
-          טרעפֿט דאָס װערטל מיט נישט מער װי זעקס טרעפֿן. נאָך יעדן טרעף, וועלן
-          די קאָלירן פֿון די קאַכלען אײַך ווײַזן ווי נאָענט דער טרעף איז צום
-          ריכטיקן װאָרט.
+          טרעפֿן דאָס וואָרט אין זעקס פּרוּוון. נאָך יעדן טרעףֿ די קאָלירן פֿון
+          די קאַכלען וועלן זיך בייַטן צו ווייַזן ווי נאָענט דער טרעףֿ איז געווען
+          צו דעם ריכטיקע וואָרט.
         </p>
 
         <div className="flex justify-center mb-1 mt-4">
@@ -30,7 +30,8 @@ export const InfoModal = ({ isOpen, handleClose, language }: Props) => {
           <Cell value="ל" status="correct" />
         </div>
         <p className="text-sm text-gray-500 dark:text-gray-300">
-          דער אות ל איז אין דעם וואָרט און אין דעם ריכטיקן אָרט.
+          דער אות <strong>ל</strong> איז אין דעם וואָרט און אין דעם ריכטיקן
+          אָרט.
         </p>
 
         <div className="flex justify-center mb-1 mt-4">
@@ -41,7 +42,8 @@ export const InfoModal = ({ isOpen, handleClose, language }: Props) => {
           <Cell value="ל" />
         </div>
         <p className="text-sm text-gray-500 dark:text-gray-300">
-          דער אות נ איז אין דעם וואָרט אָבער נישט אין דעם ריכטיקן אָרט.
+          דער אות <strong>נ</strong> איז אין דעם וואָרט אָבער נישט אין דעם
+          ריכטיקן אָרט.
         </p>
 
         <div className="flex justify-center mb-1 mt-4">
@@ -52,7 +54,7 @@ export const InfoModal = ({ isOpen, handleClose, language }: Props) => {
           <Cell value="ע" />
         </div>
         <p className="text-sm text-gray-500 dark:text-gray-300">
-          דער אות ט איז נישט אין דעם וואָרט.
+          דער אות <strong>ט</strong> איז נישט אין דעם וואָרט.
         </p>
       </BaseModal>
     )
