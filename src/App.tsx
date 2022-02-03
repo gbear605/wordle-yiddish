@@ -257,7 +257,7 @@ function App() {
         isOpen={isGameLost}
       />
       <Alert
-        message={WIN_MESSAGES(language)}
+        message={WIN_MESSAGES(language, guesses.length)}
         isOpen={isGameWonAlertOpen}
         variant="success"
       />

@@ -9,20 +9,80 @@ export const GAME_TITLE = (language: Language) => {
   return getText({ YIDDISH: 'ווערטל', ENGLISH: 'Yiddish Wordle' }, language)
 }
 
-export const WIN_MESSAGES = (language: Language) => {
-  let winMessages = []
+export type NumGuesses = 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE' | 'SIX'
+
+export const WIN_MESSAGES = (language: Language, numGuessesRaw: number) => {
+  let winMessages: {
+    ONE: string[]
+    TWO: string[]
+    THREE: string[]
+    FOUR: string[]
+    FIVE: string[]
+    SIX: string[]
+  } = {
+    ONE: [],
+    TWO: [],
+    THREE: [],
+    FOUR: [],
+    FIVE: [],
+    SIX: [],
+  }
   switch (language) {
     case 'YIDDISH': {
-      winMessages = ['דו האָסט געוווּנען!']
+      winMessages = {
+        ONE: ['זשעני'],
+        TWO: ['פּרעכטיק'],
+        THREE: ['אימפּאָזאַנט'],
+        FOUR: ['אױסגעצײכנט'],
+        FIVE: ['װוּנדערלעך'],
+        SIX: ['דאַנקען גאָט'],
+      }
       break
     }
     case 'ENGLISH': {
-      winMessages = ['Great job!']
+      winMessages = {
+        ONE: ['Amazing!'],
+        TWO: ['Awesome!'],
+        THREE: ['Great job!'],
+        FOUR: ['Well done!'],
+        FIVE: ['You did it!'],
+        SIX: ['Phew'],
+      }
       break
     }
   }
 
-  return winMessages[Math.floor(Math.random() * winMessages.length)]
+  let numGuesses: NumGuesses = 'ONE'
+  switch (numGuessesRaw) {
+    case 1: {
+      numGuesses = 'ONE'
+      break
+    }
+    case 2: {
+      numGuesses = 'TWO'
+      break
+    }
+    case 3: {
+      numGuesses = 'THREE'
+      break
+    }
+    case 4: {
+      numGuesses = 'FOUR'
+      break
+    }
+    case 5: {
+      numGuesses = 'FIVE'
+      break
+    }
+    case 6: {
+      numGuesses = 'SIX'
+      break
+    }
+  }
+
+  return winMessages[numGuesses][
+    Math.floor(Math.random() * winMessages[numGuesses].length)
+  ]
 }
 export const GAME_COPIED_MESSAGE = (language: Language) => {
   return getText(
