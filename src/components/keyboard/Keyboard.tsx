@@ -52,7 +52,7 @@ export const Keyboard = ({
   }, [onEnter, onDelete, onChar])
 
   return (
-    <div>
+    <div dir="rtl">
       <div className="flex justify-center mb-1 flex-row-reverse">
         <Key value="כּ" onClick={onClick} status={charStatuses['כּ']} />
         <Key value="ש" onClick={onClick} status={charStatuses['ש']} />
