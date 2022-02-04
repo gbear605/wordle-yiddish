@@ -176,7 +176,10 @@ function App() {
       className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8"
       dir={language === 'ENGLISH' ? 'ltr' : 'rtl'}
     >
-      <div className="flex w-80 mx-auto items-center mb-8 mt-12" dir="rtl">
+      <div
+        className="flex w-80 mx-auto items-center mb-8 mt-12 space-x-1"
+        dir="rtl"
+      >
         <h1 className="text-xl grow font-bold dark:text-white">
           {GAME_TITLE(language)}
         </h1>
@@ -184,13 +187,13 @@ function App() {
           className="h-6 w-6 cursor-pointer dark:stroke-white"
           onClick={() => handleDarkMode(!isDarkMode)}
         />
-        <InformationCircleIcon
-          className="h-6 w-6 cursor-pointer dark:stroke-white"
-          onClick={() => setIsInfoModalOpen(true)}
-        />
         <ChartBarIcon
           className="h-6 w-6 cursor-pointer dark:stroke-white"
           onClick={() => setIsStatsModalOpen(true)}
+        />
+        <InformationCircleIcon
+          className="h-6 w-6 cursor-pointer dark:stroke-white"
+          onClick={() => setIsInfoModalOpen(true)}
         />
         <TranslateIcon
           className="h-6 w-6 cursor-pointer dark:stroke-white"
