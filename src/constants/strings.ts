@@ -210,5 +210,33 @@ export const BEST_STREAK_TEXT = (language: Language) => {
     language
   )
 }
+export const ALSO_PLAY_ON_MESSAGE = (language: Language) => {
+  return getText(
+    {
+      YIDDISH:
+        'שפּיל אָן נקודות און מיט אַן אַנדערן קאָמפּלעט פֿון ווערטער אויף',
+      ENGLISH: 'Also play on',
+    },
+    language
+  )
+}
+export const FORVERTS_WEBSITE_MESSAGE = (language: Language) => {
+  return getText(
+    {
+      YIDDISH: 'דעם פֿאָרווערטס וועבזייַטל.',
+      ENGLISH: 'the Forverts website,',
+    },
+    language
+  )
+}
+export const DIFFERENCES_MESSAGE = (language: Language) => {
+  return getText(
+    {
+      YIDDISH: '',
+      ENGLISH: 'with a different keyboard and set of words!',
+    },
+    language
+  )
+}
 
 export type Language = 'YIDDISH' | 'ENGLISH'

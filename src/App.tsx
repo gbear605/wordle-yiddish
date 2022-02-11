@@ -25,6 +25,9 @@ import {
   NOT_ENOUGH_LETTERS_MESSAGE,
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
+  ALSO_PLAY_ON_MESSAGE,
+  FORVERTS_WEBSITE_MESSAGE,
+  DIFFERENCES_MESSAGE,
   Language,
 } from './constants/strings'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
@@ -233,6 +236,20 @@ function App() {
         }}
         language={language}
       />
+      <div
+        dir={language === 'ENGLISH' ? 'ltr' : 'rtl'}
+        className="mt-8 text-center"
+      >
+        {ALSO_PLAY_ON_MESSAGE(language)}{' '}
+        <a
+          href="https://forward.com/yiddish-wordle/"
+          className="underline font-bold"
+        >
+          {FORVERTS_WEBSITE_MESSAGE(language)}
+        </a>
+        <br />
+        {DIFFERENCES_MESSAGE(language)}
+      </div>
       <AboutModal
         isOpen={isAboutModalOpen}
         handleClose={() => setIsAboutModalOpen(false)}
