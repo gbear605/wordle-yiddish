@@ -19,7 +19,7 @@ export const InfoModal = ({ isOpen, handleClose, language }: Props) => {
         <p className="text-sm text-gray-500 dark:text-gray-300">
           טרעפֿן דאָס וואָרט אין זעקס פּרוּוון. נאָך יעדן טרעףֿ די קאָלירן פֿון
           די קאַכלען וועלן זיך בייַטן צו ווייַזן ווי נאָענט דער טרעףֿ איז געווען
-          צו דעם ריכטיקע וואָרט.
+          צו דעם ריכטיקן וואָרט.
         </p>
 
         <div className="flex justify-center mb-1 mt-4">
